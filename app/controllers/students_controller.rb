@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   def index
+    
     matching_studentss = Student.all
 
     @list_of_students = matching_studentss.order({ :created_at => :desc })
@@ -8,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    the_id = params.fetch(":path_id")
+    the_id = params.fetch("path_id")
 
     matching_students = Student.where({:id => the_id })
 
