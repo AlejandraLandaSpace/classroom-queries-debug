@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h1>
-      Course #<%= course.id %> details
+      Course #<%= @the_course.id %> details
     </h1>
 
     <div class="row mb-3">
@@ -13,6 +13,7 @@
     </div>
 
     <dl>
+     <% @list_of_courses.each do |course| %>
       <dt>
         Title
       </dt>
@@ -32,7 +33,7 @@
       </dt>
       <dd>
         <% department = Department.where({ :id => course.department_id }).at(0) %>
-        <a href="/departments/<%= department.id %>"><%= department.name %></a>
+        <a href="/departments/<%= department.id%>"><%= department.name %></a>
       </dd>
 
       <dt>
@@ -41,6 +42,7 @@
       <dd>
         <%= Enrollment.where({ :course_id => course.id }).count %>
       </dd>
+      <%#end%>
     </dl>
   </div>
 </div>
@@ -59,5 +61,5 @@
       </a>
     </li>
   <% end %>
+  <%end%>
 </ul>
-
